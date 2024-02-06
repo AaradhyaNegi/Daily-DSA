@@ -1,0 +1,96 @@
+Given two strings s and t, determine if they are isomorphic.
+
+Two strings s and t are isomorphic if the characters in s can be replaced to get t.
+
+All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the same character, but a character may map to itself.
+
+ 
+
+Example 1:
+
+Input: s = "egg", t = "add"
+Output: true
+Example 2:
+
+Input: s = "foo", t = "bar"
+Output: false
+Example 3:
+
+Input: s = "paper", t = "title"
+Output: true
+ 
+
+Constraints:
+
+1 <= s.length <= 5 * 104
+t.length == s.length
+s and t consist of any valid ascii character.
+
+
+class Solution {
+    public boolean isIsomorphic(String s, String t) {
+        // int n = s.length();
+        // int m = t.length();
+
+        // if(n != m){
+        //     return false;
+        // }
+
+        // HashMap<Character,Character> sTot = new HashMap<>();
+        // HashMap<Character,Character> tTos = new HashMap<>();
+
+        // for(int i=0; i<n; i++){
+        //     char charS = s.charAt(i);
+        //     char charT = t.charAt(i);
+
+        //     if(sTot.containsKey(charS)){
+        //         if(sTot.get(charS) != charT){
+        //             return false;
+        //         }
+        //     }
+        //     else{
+        //         sTot.put(charS,charT);
+        //     }
+
+        // }
+        //  for(int i=0; i<m; i++){
+        //     char charS = s.charAt(i);
+        //     char charT = t.charAt(i);
+
+        //     if(tTos.containsKey(charT)){
+        //         if(tTos.get(charT) != charS){
+        //             return false;
+        //         }
+        //     }
+        //     else{
+        //         tTos.put(charT,charS);
+        //     }
+
+        // }
+        // return true;
+
+        int n = s.length();
+
+        int num1[] = new int[256];
+        int num2[] = new int[256];
+
+
+        for(int i=0; i<n; i++){
+            char charS = s.charAt(i);
+            char charT = t.charAt(i);
+
+            if(num1[charS] != num2[charT]){
+                return false;
+            }
+
+            num1[charS] = i + 1;
+            num2[charT] = i + 1;
+
+        }
+    return true;
+
+
+    }
+}
+
+
