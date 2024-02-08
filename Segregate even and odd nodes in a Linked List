@@ -1,0 +1,44 @@
+Problem: Given a linked list, Segregate even and odd nodes in a Linked List.
+
+ public static void segregate(ListNode head){
+            ListNode evenStart = null;
+            ListNode evenEnd = null;
+            ListNode oddStart = null;
+            ListNode oddEnd = null;
+            ListNode currentListNode = head;
+
+            while(currentListNode != null){
+                int data = currentListNode.data;
+
+                if(data % 2 == 0){
+                    if(evenStart == null){
+                        evenStart = currentListNode;
+                        evenEnd = evenStart;
+                    }else{
+                        evenEnd.next = currentListNode;
+                        evenEnd = evenEnd.next;
+                    }
+                }else{
+                    if(oddStart == null){
+                        oddStart = currentListNode;
+                        oddEnd = oddStart;
+                    }else{
+                        oddEnd.next = currentListNode;
+                        oddEnd = oddEnd.next;
+                    }
+                }
+                currentListNode = currentListNode.next;
+            }
+            if(oddStart == null || evenStart == null){
+                return;
+            }
+            evenEnd.next = oddStart;
+            oddEnd.next = null;
+            head = evenStart;
+
+
+            printLL(head);
+
+
+
+        }
