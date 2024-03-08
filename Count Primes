@@ -1,0 +1,32 @@
+Problem statement
+You are given an integer 'N'.
+
+
+
+You must return the unique prime factors of 'N' in increasing order.
+
+
+
+For Example:
+For ‘N’ = 10.
+
+Unique prime factors are 2 and 5.
+
+Hence we return {2, 5}.
+Detailed explanation ( Input/output format, Notes, Images )
+Sample Input 1:
+35
+Sample Output 1:
+5 7
+Explanation For Sample Output 1:
+Unique prime factors are 5 and 7.
+
+Hence we return {5, 7}.
+Sample Input 2:
+14
+Sample Output 2:
+2 7
+Constraints:
+1 <= 'N' <= 10^6
+
+Time Limit: 1 sec.
