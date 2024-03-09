@@ -1,0 +1,85 @@
+Problem statement
+You're given a string 'S' consisting of "{", "}", "(", ")", "[" and "]" .
+
+
+
+Return true if the given string 'S' is balanced, else return false.
+
+
+
+For example:
+'S' = "{}()".
+
+There is always an opening brace before a closing brace i.e. '{' before '}', '(' before ').
+So the 'S' is Balanced.
+Detailed explanation ( Input/output format, Notes, Images )
+Sample Input 1 :
+[()]{}{[()()]()}
+Sample Output 1 :
+Balanced
+Explanation Of the Sample Input 1 :
+There is always an opening brace before a closing brace i.e. '{' before '}', '(' before '), '[' before ']'.
+So the 'S' is Balanced.
+Sample Input 2 :
+[[}[
+Sample Output 2 :
+Not Balanced
+Constraints:
+1 <= 'N' <= 10^5
+
+Where 'N' is the length of the input string 'S'.
+Time Limit: 1 sec
+
+
+import java.util.*;
+public class Solution {
+    public static boolean isValidParenthesis(String s) {
+        // Write your code here.
+        Stack<Character> st = new Stack<>();
+        int n = s.length();
+
+        if(n == 1){
+            return false;
+        }
+
+        for(int i=0; i<n; i++){
+            char c = s.charAt(i);
+
+            if(c == '(' || c == '[' || c == '{'){
+                st.push(c);
+            }
+
+            if(c == ')'){
+                if(st.isEmpty()){
+                    return false;
+                }
+                if(st.peek() == '('){
+                    st.pop();
+                }else{
+                    return false;
+                }
+            }
+            else if(c == ']'){
+                if(st.isEmpty()){
+                    return false;
+                }
+                if(st.peek() == '['){
+                    st.pop();
+                }else{
+                    return false;
+                }
+            }
+            else if(c == '}'){
+                if(st.isEmpty()){
+                    return false;
+                }
+                if(st.peek() == '{'){
+                    st.pop();
+                }else{
+                    return false;
+                }
+            }
+        }
+        return st.isEmpty();
+    }
+}
